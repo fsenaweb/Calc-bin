@@ -5,4 +5,4 @@ dist/
 npm-debug.log*
 cordova/platforms
 cordova/plugins
-.idea/*
+/.idea
