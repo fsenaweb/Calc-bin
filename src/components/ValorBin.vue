@@ -28,10 +28,8 @@
     methods: {
       verificabin: function ($event) {
         this.binario = $event.target.value
-        console.log($event.target.value)
         let taskb = this.binario
         this.$emit('valuebin', taskb)
-        console.log(taskb)
       }
     }
   }
