@@ -56,8 +56,9 @@ export default {
       console.log(taskb)
     },
     addHexa (taskh) {
-      this.numHexa = taskh
-      console.log(this.numHexa)
+      let hexadecimal = taskh
+      let decimal = parseInt(hexadecimal, 16)
+      this.numGeral = decimal
     },
     addOctal (tasko) {
       this.numOctal = tasko

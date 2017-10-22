@@ -1,6 +1,6 @@
 <template>
   <div class="col-12">
-    <q-input v-model="converter" v-on:keyup="verificaHexa" type="text" align="right" inverted color="faded" stack-label="Número Hexadecimal"></q-input>
+    <q-input v-model="converterh" v-on:keyup.enter="verificaHexa" type="text" align="right" inverted color="faded" stack-label="Número Hexadecimal"></q-input>
   </div>
 </template>
 <script>
@@ -10,6 +10,7 @@
     props: ['numPrincipal'],
     data () {
       return {
+        hexadecimal: '',
         numhexa: ''
       }
     },
@@ -17,7 +18,7 @@
       QInput
     },
     computed: {
-      converter () {
+      converterh () {
         let decimal = this.numPrincipal
         let numhexa = decimal.toString(16)
         return numhexa
@@ -25,25 +26,9 @@
     },
     methods: {
       verificaHexa: function ($event) {
-        if (($event.keyCode >= 48 && $event.keyCode <= 70)) {
-          this.numHexa = $event.target.value
-          this.numBack = this.numHexa
-        }
-        else {
-          if (this.numBack === undefined) {
-            this.numHexa = this.numBack
-          }
-          this.numHexa = this.numBack
-        }
-        let taskh = this.numHexa
+        this.hexadecimal = $event.target.value
+        let taskh = this.hexadecimal
         this.$emit('valuehexa', taskh)
-      }
-    },
-    filters: {
-      capitalize: function (numhexa) {
-        if (!numhexa) return ''
-        numhexa = numhexa.toString()
-        return numhexa.toUpperCase()
       }
     }
   }
