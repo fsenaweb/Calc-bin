@@ -1,0 +1,32 @@
+root = true
+
+[*]
+
+; Pra todos os arquivos
+[*]
+charset = utf-8
+indent_style = tab
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+; Estilo de identação em arquivos HTML
+[*.html]
+indent_style = tab
+indent_size = 2
+
+; Estilo de identação em arquivos VUE
+[*.vue]
+indent_style = space
+indent_size = 2
+
+; Estilo de identação em arquivos CSS
+[*.css]
+indent_style = tab
+indent_size = 2
+
+; Estilo de identação em arquivos JS dentro do diretório Scripts
+[scripts/*.js]
+indent_style = tab
+indent_size = 2
