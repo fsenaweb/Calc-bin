@@ -91,7 +91,8 @@ export default {
 <style>
 
   .q-input{
-    height: 70px;
+    height: 50px;
+    margin-top: -7px;
   }
 
 </style>

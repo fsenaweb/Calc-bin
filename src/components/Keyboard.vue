@@ -1,31 +1,45 @@
 <template>
 
   <div class="row" style="margin-bottom: 2%">
-    <div class="col-4 btn-key-left">D</div>
-    <div class="col-4 btn-key-left">E</div>
-    <div class="col-4 btn-key-right">F</div>
-    <div class="col-4 btn-key-left">A</div>
-    <div class="col-4 btn-key-left">B</div>
-    <div class="col-4 btn-key-right">C</div>
-    <div class="col-4 btn-key-left">7</div>
-    <div class="col-4 btn-key-left">8</div>
-    <div class="col-4 btn-key-right">9</div>
-    <div class="col-4 btn-key-left">4</div>
-    <div class="col-4 btn-key-left">5</div>
-    <div class="col-4 btn-key-right">6</div>
-    <div class="col-4 btn-key-left">1</div>
-    <div class="col-4 btn-key-left">2</div>
-    <div class="col-4 btn-key-right">3</div>
-    <div class="col-4 btn-key-left">0</div>
-    <div class="col-8 btn-key-clear">limpar</div>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">D</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">E</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">F</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">A</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">B</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">C</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">7</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">8</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">9</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">4</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">5</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">6</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">1</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">2</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">3</q-btn>
+    <q-btn flat style="color: #FFF" class="col-4 btn-key-left">0</q-btn>
+    <q-btn flat style="color: #FFF" class="col-8 btn-key-left">limpar</q-btn>
   </div>
 
 </template>
 
 <script>
-	export default {
-	  name: 'keyboard'
-	}
+  import {QBtn} from 'quasar'
+  export default {
+    name: 'keyboard',
+    data () {
+      return {
+        activeClass: false
+      }
+    },
+    components: {
+      QBtn
+    },
+    methods: {
+      clicando () {
+        this.activeClass = true
+      }
+    }
+  }
 </script>
 
 <style scoped>
@@ -60,6 +74,10 @@
     text-align: center;
     padding: 2.5%;
     color: #FFF;
+  }
+
+  .activeClass{
+    background-color: orange;
   }
 
 </style>
