@@ -3,19 +3,29 @@
   <div id="q-app">
     <div class="row">
       <div class="col-1"></div>
+
       <div class="col-10">
-      <div>
-        <img src="~assets/logo.png" class="responsive">
+
+        <div>
+          <img src="~assets/logo.png" class="responsive">
+        </div>
+
+        <br>
+
+        <div class="row">
+          <valor-bin @valuebin="addBinary" :num-principal="numPrincipal"></valor-bin>
+          <valor-hexa @valuehexa="addHexa" :num-principal="numPrincipal"></valor-hexa>
+          <valor-octal @valueoctal="addOctal" :num-principal="numPrincipal"></valor-octal>
+        </div>
+
+          <q-input v-model="numGeral" type="text" @keyup.enter="sendNumber" align="right" inverted color="dark" stack-label="Digite um número decimal" ></q-input>
+
+          <keyboard></keyboard>
+
       </div>
-    <br>
-      <div class="row">
-        <valor-bin @valuebin="addBinary" :num-principal="numPrincipal"></valor-bin>
-        <valor-hexa @valuehexa="addHexa" :num-principal="numPrincipal"></valor-hexa>
-        <valor-octal @valueoctal="addOctal" :num-principal="numPrincipal"></valor-octal>
-      </div>
-    <q-input v-model="numGeral" type="text" @keyup.enter="sendNumber" align="right" inverted color="dark" stack-label="Digite um número decimal" ></q-input>
-      </div>
+
       <div class="col-1"></div>
+
     </div>
   </div>
 </template>
@@ -26,6 +36,7 @@ import ValorOctal from './components/ValorOctal'
 import ValorHexa from './components/ValorHexa'
 import ValorBin from './components/ValorBin'
 import ValorDec from './components/ValorDec'
+import Keyboard from './components/Keyboard'
 
 export default {
   data () {
@@ -43,6 +54,7 @@ export default {
     ValorHexa,
     ValorBin,
     ValorDec,
+    Keyboard,
     QLayout,
     QToolbar,
     QToolbarTitle,
