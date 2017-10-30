@@ -13,14 +13,14 @@
         <br>
 
         <div class="row">
-          <valor-bin @valuebin="addBinary" :num-principal="numPrincipal"></valor-bin>
-          <valor-hexa @valuehexa="addHexa" :num-principal="numPrincipal"></valor-hexa>
+          <valor-bin @selectInput="seleciona" :num-principal="numPrincipal"></valor-bin>
+          <valor-hexa @selectInput="seleciona" :num-principal="numPrincipal"></valor-hexa>
           <valor-octal @valueoctal="addOctal" :num-principal="numPrincipal"></valor-octal>
         </div>
 
           <q-input v-model="numGeral" type="text" @keyup.enter="sendNumber" align="right" inverted color="dark" stack-label="Digite um número decimal" ></q-input>
 
-          <keyboard></keyboard>
+          <keyboard :key-disabled="keyDisabled"></keyboard>
 
       </div>
 
@@ -44,9 +44,9 @@ export default {
       numBin: '',
       numHexa: '',
       numOctal: '',
-      numDec: '',
       numGeral: '',
-      numPrincipal: ''
+      numPrincipal: '',
+      keyDisabled: []
     }
   },
   components: {
@@ -61,6 +61,48 @@ export default {
     QInput
   },
   methods: {
+    seleciona (selectInput) {
+      if (selectInput === 'inputBin') {
+        this.keyDisabled = [
+          true, // D
+          true, // E
+          true, // F
+          true, // A
+          true, // B
+          true, // C
+          true, // 7
+          true, // 8
+          true, // 9
+          true, // 4
+          true, // 5
+          true, // 6
+          false, // 1
+          true, // 2
+          true, // 3
+          false // 0
+        ]
+      }
+      else if (selectInput === 'inputHexa') {
+        this.keyDisabled = [
+          false, // D
+          false, // E
+          false, // F
+          false, // A
+          false, // B
+          false, // C
+          false, // 7
+          false, // 8
+          false, // 9
+          false, // 4
+          false, // 5
+          false, // 6
+          false, // 1
+          false, // 2
+          false, // 3
+          false // 0
+        ]
+      }
+    },
     addBinary (taskb) {
       let binario = taskb
       let decimal = parseInt(binario, 2)

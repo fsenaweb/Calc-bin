@@ -1,6 +1,6 @@
 <template>
   <div class="col-12">
-    <q-input v-model="converterh" v-on:keyup.enter="verificaHexa" type="text" align="right" inverted color="faded" stack-label="Número Hexadecimal"></q-input>
+    <q-input v-model="converter" disable @click="selecttype" @keyup.enter="verificaHexa" type="text" align="right" inverted color="faded" stack-label="Número Hexadecimal"></q-input>
   </div>
 </template>
 <script>
@@ -11,14 +11,14 @@
     data () {
       return {
         hexadecimal: '',
-        numhexa: ''
+        numhexa: false
       }
     },
     components: {
       QInput
     },
     computed: {
-      converterh () {
+      converter () {
         let decimal = this.numPrincipal
         let numhexa = decimal.toString(16)
         return numhexa
@@ -29,6 +29,10 @@
         this.hexadecimal = $event.target.value
         let taskh = this.hexadecimal
         this.$emit('valuehexa', taskh)
+      },
+      selecttype () {
+        let selectInput = 'inputHexa'
+        this.$emit('selectInput', selectInput)
       }
     }
   }

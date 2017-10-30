@@ -1,17 +1,18 @@
 <template>
   <div class="col-12">
-    <q-input v-model="converter" v-on:keyup.enter="verificabin" type="text" align="right" inverted color="tertiary" stack-label="Número Binário" ></q-input>
+    <q-input v-model="converter" disable @click="selecttype" @keyup.enter="verificabin" type="text" align="right" inverted color="tertiary" stack-label="Número Binário" ></q-input>
   </div>
 </template>
+
 <script>
   import { QInput } from 'quasar'
+
   export default {
     name: 'bin',
     props: ['numPrincipal'],
     data () {
       return {
         binario: '',
-        numBin: '',
         numBack: ''
       }
     },
@@ -30,6 +31,10 @@
         this.binario = $event.target.value
         let taskb = this.binario
         this.$emit('valuebin', taskb)
+      },
+      selecttype () {
+        let selectInput = 'inputBin'
+        this.$emit('selectInput', selectInput)
       }
     }
   }
