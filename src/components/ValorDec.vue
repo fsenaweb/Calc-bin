@@ -1,24 +1,24 @@
 <template>
   <div class="col-12">
-    <q-input v-model="numDec" v-on:keyup="verificaDec" type="number" align="right" inverted color="positive" stack-label="Número Decimal" ></q-input>
+    <q-input v-model="numDec" disable @click="selecttype" type="number" align="right" inverted color="faded" stack-label="Número Decimal" ></q-input>
   </div>
 </template>
 <script>
   import { QInput } from 'quasar'
   export default {
     name: 'dec',
+    props: ['numDec'],
     data () {
       return {
-        numDec: ''
       }
     },
     components: {
       QInput
     },
     methods: {
-      verificaDec: function () {
-        let taskd = this.numDec
-        this.$emit('valuedec', taskd)
+      selecttype () {
+        let selectInput = 'inputDec'
+        this.$emit('selectInput', selectInput)
       }
     }
   }

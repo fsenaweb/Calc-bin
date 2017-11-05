@@ -13,14 +13,13 @@
         <br>
 
         <div class="row">
-          <valor-bin @selectInput="seleciona" :num-principal="numPrincipal"></valor-bin>
-          <valor-hexa @selectInput="seleciona" :num-principal="numPrincipal"></valor-hexa>
-          <valor-octal @valueoctal="addOctal" :num-principal="numPrincipal"></valor-octal>
+          <valor-bin @selectInput="seleciona" :num-binario="numBin"></valor-bin>
+          <valor-hexa @selectInput="seleciona" :num-hexa="numHexa"></valor-hexa>
+          <valor-octal @selectInput="seleciona" :num-octal="numOctal"></valor-octal>
+          <valor-dec @selectInput="seleciona" :num-dec="numDec"></valor-dec>
         </div>
 
-          <q-input v-model="numGeral" type="text" @keyup.enter="sendNumber" align="right" inverted color="dark" stack-label="Digite um número decimal" ></q-input>
-
-          <keyboard :key-disabled="keyDisabled"></keyboard>
+        <keyboard :key-disabled="keyDisabled" @tecla="digitado"></keyboard>
 
       </div>
 
@@ -31,7 +30,7 @@
 </template>
 
 <script>
-import { QLayout, QToolbar, QToolbarTitle, QInput } from 'quasar'
+import { QLayout, QToolbar, QToolbarTitle, QInput, Alert } from 'quasar'
 import ValorOctal from './components/ValorOctal'
 import ValorHexa from './components/ValorHexa'
 import ValorBin from './components/ValorBin'
@@ -44,9 +43,11 @@ export default {
       numBin: '',
       numHexa: '',
       numOctal: '',
+      numDec: '',
       numGeral: '',
       numPrincipal: '',
-      keyDisabled: []
+      keyDisabled: [],
+      selectInput: ''
     }
   },
   components: {
@@ -58,11 +59,16 @@ export default {
     QLayout,
     QToolbar,
     QToolbarTitle,
-    QInput
+    QInput,
+    Alert
   },
   methods: {
     seleciona (selectInput) {
       if (selectInput === 'inputBin') {
+        this.numHexa = ''
+        this.numOctal = ''
+        this.numDec = ''
+        this.selectInput = 'inputBin'
         this.keyDisabled = [
           true, // D
           true, // E
@@ -83,6 +89,10 @@ export default {
         ]
       }
       else if (selectInput === 'inputHexa') {
+        this.numBin = ''
+        this.numOctal = ''
+        this.numDec = ''
+        this.selectInput = 'inputHexa'
         this.keyDisabled = [
           false, // D
           false, // E
@@ -102,29 +112,158 @@ export default {
           false // 0
         ]
       }
+      else if (selectInput === 'inputOct') {
+        this.numHexa = ''
+        this.numBin = ''
+        this.numDec = ''
+        this.selectInput = 'inputOct'
+        this.keyDisabled = [
+          true, // D
+          true, // E
+          true, // F
+          true, // A
+          true, // B
+          true, // C
+          false, // 7
+          true, // 8
+          true, // 9
+          false, // 4
+          false, // 5
+          false, // 6
+          false, // 1
+          false, // 2
+          false, // 3
+          false // 0
+        ]
+      }
+      else if (selectInput === 'inputDec') {
+        this.numHexa = ''
+        this.numOctal = ''
+        this.numBin = ''
+        this.selectInput = 'inputDec'
+        this.keyDisabled = [
+          true, // D
+          true, // E
+          true, // F
+          true, // A
+          true, // B
+          true, // C
+          false, // 7
+          false, // 8
+          false, // 9
+          false, // 4
+          false, // 5
+          false, // 6
+          false, // 1
+          false, // 2
+          false, // 3
+          false // 0
+        ]
+      }
     },
-    addBinary (taskb) {
+    digitado (key) {
+      if (this.selectInput === 'inputBin') {
+        if (key === 'OK') {
+          let convertNum = this.addBinary(this.numBin)
+          this.numHexa = this.addHexa(convertNum).toUpperCase()
+          this.numOctal = this.addOctal(convertNum)
+          this.numDec = convertNum
+        }
+        else if (key === 'LIMPAR') {
+          this.numBin = ''
+          this.numHexa = ''
+          this.numOctal = ''
+          this.numDec = ''
+        }
+        else {
+          this.numBin += key
+        }
+      }
+      else if (this.selectInput === 'inputHexa') {
+        if (key === 'OK') {
+          let convertNum = this.hexa2Dec(this.numHexa)
+          this.numBin = this.dec2Bin(convertNum)
+          this.numOctal = this.addOctal(convertNum)
+          this.numDec = convertNum
+        }
+        else if (key === 'LIMPAR') {
+          this.numBin = ''
+          this.numHexa = ''
+          this.numOctal = ''
+          this.numDec = ''
+        }
+        else {
+          this.numHexa += key
+        }
+      }
+      else if (this.selectInput === 'inputOct') {
+        if (key === 'OK') {
+          let convertNum = this.oct2dec(this.numOctal)
+          this.numBin = this.dec2Bin(convertNum)
+          this.numHexa = this.addHexa(convertNum).toUpperCase()
+          this.numDec = convertNum
+        }
+        else if (key === 'LIMPAR') {
+          this.numBin = ''
+          this.numHexa = ''
+          this.numOctal = ''
+          this.numDec = ''
+        }
+        else {
+          this.numOctal += key
+        }
+      }
+      else if (this.selectInput === 'inputDec') {
+        if (key === 'OK') {
+          let convertNum = this.dec2Bin(this.numDec)
+          this.numBin = convertNum
+          convertNum = this.addBinary(convertNum)
+          this.numHexa = this.addHexa(convertNum).toUpperCase()
+          this.numOctal = this.addOctal(convertNum)
+        }
+        else if (key === 'LIMPAR') {
+          this.numBin = ''
+          this.numHexa = ''
+          this.numOctal = ''
+          this.numDec = ''
+        }
+        else {
+          this.numDec += key
+        }
+      }
+      else {
+        Alert.create({html: 'Atenção, selecione um tipo de numeração!'})
+      }
+    },
+    addBinary (taskb) { // convert binario para decimal
       let binario = taskb
       let decimal = parseInt(binario, 2)
-      this.numGeral = decimal
-      console.log(taskb)
+      return decimal
     },
-    addHexa (taskh) {
-      let hexadecimal = taskh
-      let decimal = parseInt(hexadecimal, 16)
-      this.numGeral = decimal
+    addHexa (taskh) { // convert binario para hexadecimal
+      let decimal = taskh
+      let hexadecimal = decimal.toString(16)
+      return hexadecimal
     },
-    addOctal (tasko) {
-      this.numOctal = tasko
-      console.log(this.numOctal)
+    addOctal (tasko) { // convert binario para octal
+      let decimal = tasko
+      let octal = decimal.toString(8)
+      return octal
     },
-    addDec (taskd) {
-      this.numDec = taskd
-      console.log(this.numDec)
+    dec2Bin (taks) { // convert decimal para binario
+      let decimal = parseInt(taks, 10)
+      let binario = decimal.toString(2)
+      return binario
     },
-    sendNumber () {
-      let decimal = parseInt(this.numGeral)
-      this.numPrincipal = decimal
+    hexa2Dec (task) { // convert hexadecimal para decimal
+      let valor = task
+      let decimal = parseInt(valor, 16)
+      return decimal
+    },
+    oct2dec (task) {
+      let octal = task
+      let decimal = parseInt(octal, 8)
+      return decimal
     }
   }
 }
@@ -135,6 +274,10 @@ export default {
   .q-input{
     height: 50px;
     margin-top: -7px;
+  }
+
+  .active {
+    border-left: 5px solid #FFF;
   }
 
 </style>

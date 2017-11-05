@@ -1,6 +1,6 @@
 <template>
   <div class="col-12">
-    <q-input v-model="converter" disable @click="selecttype" @keyup.enter="verificabin" type="text" align="right" inverted color="tertiary" stack-label="Número Binário" ></q-input>
+    <q-input v-model="numBinario" disable @click="selecttype" type="text" align="right" inverted color="tertiary" stack-label="Número Binário" ></q-input>
   </div>
 </template>
 
@@ -9,11 +9,9 @@
 
   export default {
     name: 'bin',
-    props: ['numPrincipal'],
+    props: ['numBinario'],
     data () {
       return {
-        binario: '',
-        numBack: ''
       }
     },
     components: {
@@ -21,17 +19,12 @@
     },
     computed: {
       converter () {
-        let decimal = this.numPrincipal
-        this.binario = decimal.toString(2)
+        // let decimal = this.numPrincipal
+        // this.binario = decimal.toString(2)
         return this.binario
       }
     },
     methods: {
-      verificabin: function ($event) {
-        this.binario = $event.target.value
-        let taskb = this.binario
-        this.$emit('valuebin', taskb)
-      },
       selecttype () {
         let selectInput = 'inputBin'
         this.$emit('selectInput', selectInput)
