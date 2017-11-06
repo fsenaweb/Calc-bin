@@ -1,6 +1,6 @@
 <template>
 
-  <div class="row" style="margin-bottom: 2%">
+  <div class="row">
     <q-btn flat style="color: #FFF" :disabled="keyDisabled[0]" @click="press" class="col-4 btn-key-left">D</q-btn>
     <q-btn flat style="color: #FFF" :disabled="keyDisabled[1]" @click="press" class="col-4 btn-key-left">E</q-btn>
     <q-btn flat style="color: #FFF" :disabled="keyDisabled[2]" @click="press" class="col-4 btn-key-left">F</q-btn>
@@ -47,8 +47,8 @@
 <style scoped>
 
   .btn-key-left{
-    background: #4A4A4A;
-    height: 35px;
+    background: #5F5F5F;
+    min-height: 3em;
     border-left: 1px solid #6A6A6A;
     border-top: 1px solid #6A6A6A;
     text-align: center;
@@ -57,7 +57,7 @@
   }
 
   .btn-key-right{
-    background: #4A4A4A;
+    background: #5F5F5F;
     height: 35px;
     border-left: 1px solid #6A6A6A;
     border-top: 1px solid #6A6A6A;

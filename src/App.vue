@@ -2,28 +2,21 @@
   <!-- Don't drop "q-app" class -->
   <div id="q-app">
     <div class="row">
-      <div class="col-1"></div>
-
-      <div class="col-10">
+      <div class="col-12">
 
         <div>
           <img src="~assets/logo.png" class="responsive">
         </div>
-
         <br>
-
         <div class="row">
           <valor-bin @selectInput="seleciona" :num-binario="numBin"></valor-bin>
           <valor-hexa @selectInput="seleciona" :num-hexa="numHexa"></valor-hexa>
           <valor-octal @selectInput="seleciona" :num-octal="numOctal"></valor-octal>
           <valor-dec @selectInput="seleciona" :num-dec="numDec"></valor-dec>
         </div>
-
         <keyboard :key-disabled="keyDisabled" @tecla="digitado"></keyboard>
 
       </div>
-
-      <div class="col-1"></div>
 
     </div>
   </div>
@@ -270,6 +263,10 @@ export default {
 </script>
 
 <style>
+
+  body{
+    background-color: #000;
+  }
 
   .q-input{
     height: 50px;
