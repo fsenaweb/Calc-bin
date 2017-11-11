@@ -1,7 +1,7 @@
 <template>
   <div class="col-12">
     <q-input v-model="numBinario" disable @click="selecttype" type="text" align="right" inverted color="tertiary" stack-label="Número Binário" >
-      
+
     </q-input>
   </div>
 </template>
