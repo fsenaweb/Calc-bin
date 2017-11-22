@@ -1,7 +1,7 @@
 {
   "name": "calc-bin",
   "productName": "Calculadora de Binários",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Uma calculadora para converter números decimais em binários, hexadecimais e octal",
   "author": "Matheus Ricelly <fsenaweb@gmail.com>",
   "scripts": {
