@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.fsenaweb.calcbin" version="0.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.fsenaweb.calconversor" version="0.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>CalcBin</name>
     <description>
-			Uma calculadora para converter números decimais em binários, hexadecimais e octal.
+			Um conversor para números decimais, binários, hexadecimais e octal.
     </description>
     <author email="fsenaweb@gmail.com" href="http://fsenaweb.io">
         Matheus Ricelly
@@ -39,7 +39,10 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="HideKeyboardFormAccessoryBar" value="false" />
     <preference name="KeepRunning" value="false" />
-    <preference name="android-minSdkVersion" value="14" />
-    <engine name="android" spec="^6.3.0" />
+    <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-targetSdkVersion" value="19" />
+    <preference name="xwalkVersion" value="19" />
+    <plugin name="cordova-plugin-crosswalk-webview" spec="^2.3.0" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <engine name="android" spec="~6.3.0" />
 </widget>

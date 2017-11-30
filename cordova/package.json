@@ -1,24 +1,26 @@
 {
-  "name": "helloworld",
-  "displayName": "HelloCordova",
-  "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "name": "conversor",
+  "displayName": "CalcBin",
+  "version": "0.2.2",
+  "description": "Um conversor para números decimais, binários, hexadecimais e octal.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Apache Cordova Team",
+  "author": "Matheus Ricelly",
   "license": "Apache-2.0",
   "dependencies": {
     "cordova-android": "^6.3.0",
+    "cordova-plugin-crosswalk-webview": "^2.3.0",
     "cordova-plugin-whitelist": "^1.3.3"
   },
   "cordova": {
+    "plugins": {
+      "cordova-plugin-crosswalk-webview": {},
+      "cordova-plugin-whitelist": {}
+    },
     "platforms": [
       "android"
-    ],
-    "plugins": {
-      "cordova-plugin-whitelist": {}
-    }
+    ]
   }
 }
