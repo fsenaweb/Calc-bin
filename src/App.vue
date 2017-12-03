@@ -4,10 +4,9 @@
     <div class="row">
       <div class="col-12">
 
-        <div>
+        <div style="margin-bottom: 1.5%">
           <img src="~assets/logo.png" class="responsive">
         </div>
-        <br>
         <div class="row">
           <valor-bin @selectInput="seleciona" :num-binario="numBin"></valor-bin>
           <valor-hexa @selectInput="seleciona" :num-hexa="numHexa"></valor-hexa>
@@ -23,7 +22,7 @@
 </template>
 
 <script>
-import { QLayout, QToolbar, QToolbarTitle, QInput, Alert } from 'quasar'
+import { QLayout, QToolbar, QToolbarTitle, QInput, Dialog } from 'quasar'
 import ValorOctal from './components/ValorOctal'
 import ValorHexa from './components/ValorHexa'
 import ValorBin from './components/ValorBin'
@@ -53,7 +52,7 @@ export default {
     QToolbar,
     QToolbarTitle,
     QInput,
-    Alert
+    Dialog
   },
   methods: {
     seleciona (selectInput) {
@@ -225,7 +224,10 @@ export default {
         }
       }
       else {
-        Alert.create({html: 'Atenção, selecione um tipo de numeração!'})
+        Dialog.create({
+          title: 'Atenção',
+          message: 'Selecione um tipo de numeração!'
+        })
       }
     },
     addBinary (taskb) { // convert binario para decimal
@@ -269,7 +271,7 @@ export default {
   }
 
   .q-input{
-    height: 50px;
+    height: 60px;
     margin-top: -7px;
   }
 
