@@ -1,13 +1,11 @@
 <template>
-  <div class="col-12">
-    <q-input v-model="numHexa" disable @click="selecttype" @keyup.enter="verificaHexa" type="text" align="right" inverted color="faded" stack-label="Número Hexadecimal"></q-input>
-  </div>
+    <q-input v-model="numHexa" disable @click="selecttype" @keyup.enter="verificaHexa" type="text" align="right" :class="{ selecionado: classSelect }" inverted color="faded" stack-label="Número Hexadecimal"></q-input>
 </template>
 <script>
   import { QInput } from 'quasar'
   export default {
     name: 'hexa',
-    props: ['numHexa'],
+    props: ['numHexa', 'classSelect'],
     data () {
       return {
       }
@@ -26,6 +24,6 @@
 
 <style scoped>
   .q-input{
-    margin-top: -7px;
+    margin-top: -8px;
   }
 </style>

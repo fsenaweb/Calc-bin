@@ -1,9 +1,5 @@
 <template>
-  <div class="col-12">
-    <q-input v-model="numBinario" disable @click="selecttype" type="text" align="right" inverted color="tertiary" stack-label="Número Binário" >
-
-    </q-input>
-  </div>
+  <q-input v-model="numBinario" disable @click="selecttype" type="text" align="right" inverted color="tertiary" :class="{ selecionado: classSelect }" stack-label="Número Binário" ></q-input>
 </template>
 
 <script>
@@ -11,7 +7,7 @@
 
   export default {
     name: 'bin',
-    props: ['numBinario'],
+    props: ['numBinario', 'classSelect'],
     data () {
       return {
       }
@@ -38,7 +34,7 @@
 <style scoped>
 
   .q-input{
-    margin-top: 5px;
+    margin-top: 0;
   }
 
 </style>

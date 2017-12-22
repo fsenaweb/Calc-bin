@@ -1,23 +1,14 @@
 <template>
   <!-- Don't drop "q-app" class -->
-  <div id="q-app">
-    <div class="row">
-      <div class="col-12">
-
-        <div style="margin-bottom: 1.5%">
-          <img src="~assets/logo.png" class="responsive">
-        </div>
-        <div class="row">
-          <valor-bin @selectInput="seleciona" :num-binario="numBin"></valor-bin>
-          <valor-hexa @selectInput="seleciona" :num-hexa="numHexa"></valor-hexa>
-          <valor-octal @selectInput="seleciona" :num-octal="numOctal"></valor-octal>
-          <valor-dec @selectInput="seleciona" :num-dec="numDec"></valor-dec>
-        </div>
-        <keyboard :key-disabled="keyDisabled" @tecla="digitado"></keyboard>
-
+  <div>
+      <img src="~assets/logo.png" class="responsive">
+      <div class="tela-numeros">
+        <valor-bin @selectInput="seleciona" :class-select="classBin" :num-binario="numBin"></valor-bin>
+        <valor-hexa @selectInput="seleciona" :class-select="classHex" :num-hexa="numHexa"></valor-hexa>
+        <valor-octal @selectInput="seleciona" :class-select="classOct" :num-octal="numOctal"></valor-octal>
+        <valor-dec @selectInput="seleciona" :class-select="classDec" :num-dec="numDec"></valor-dec>
       </div>
-
-    </div>
+      <keyboard :key-disabled="keyDisabled" @tecla="digitado"></keyboard>
   </div>
 </template>
 
@@ -39,7 +30,11 @@ export default {
       numGeral: '',
       numPrincipal: '',
       keyDisabled: [],
-      selectInput: ''
+      selectInput: '',
+      classBin: false,
+      classHex: false,
+      classOct: false,
+      classDec: false
     }
   },
   components: {
@@ -61,6 +56,10 @@ export default {
         this.numOctal = ''
         this.numDec = ''
         this.selectInput = 'inputBin'
+        this.classBin = true
+        this.classHex = false
+        this.classOct = false
+        this.classDec = false
         this.keyDisabled = [
           true, // D
           true, // E
@@ -85,6 +84,10 @@ export default {
         this.numOctal = ''
         this.numDec = ''
         this.selectInput = 'inputHexa'
+        this.classBin = false
+        this.classHex = true
+        this.classOct = false
+        this.classDec = false
         this.keyDisabled = [
           false, // D
           false, // E
@@ -109,6 +112,10 @@ export default {
         this.numBin = ''
         this.numDec = ''
         this.selectInput = 'inputOct'
+        this.classBin = false
+        this.classHex = false
+        this.classOct = true
+        this.classDec = false
         this.keyDisabled = [
           true, // D
           true, // E
@@ -133,6 +140,10 @@ export default {
         this.numOctal = ''
         this.numBin = ''
         this.selectInput = 'inputDec'
+        this.classBin = false
+        this.classHex = false
+        this.classOct = false
+        this.classDec = true
         this.keyDisabled = [
           true, // D
           true, // E
@@ -270,13 +281,33 @@ export default {
     background-color: #000;
   }
 
+  img{
+    margin: 0;
+    padding: 0;
+  }
+
+  .tela-numeros {
+    height: 83vmin;
+    margin: 0;
+    padding: 0;
+    margin-top: -1vh;
+    border: 6px solid #CCC;
+    border-top: 12px solid #CCC;
+    border-bottom: 8px solid #CCC;
+  }
+
   .q-input{
-    height: 60px;
-    margin-top: -7px;
+    height: 19.5vmin;
+    border-radius: 0;
   }
 
   .active {
-    border-left: 5px solid #FFF;
+    border-left: 5px solid #ABEAFE;
   }
+
+  .selecionado{
+    border-left: 9px solid #FFF;
+  }
+
 
 </style>

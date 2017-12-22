@@ -1,13 +1,11 @@
 <template>
-  <div class="col-12">
-    <q-input v-model="numOctal" disable @click="selecttype" type="number" align="right" inverted color="tertiary" stack-label="Número Octal"></q-input>
-  </div>
+    <q-input v-model="numOctal" disable @click="selecttype" type="number" align="right" inverted color="tertiary" :class="{ selecionado: classSelect }" stack-label="Número Octal"></q-input>
 </template>
 <script>
   import { QInput } from 'quasar'
   export default {
     name: 'octal',
-    props: ['numOctal'],
+    props: ['numOctal', 'classSelect'],
     data () {
       return {
       }
@@ -34,7 +32,7 @@
 <style scoped>
 
   .q-input{
-    margin-top: -7px;
+    margin-top: -8px;
   }
 
 </style>

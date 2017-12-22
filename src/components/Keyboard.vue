@@ -41,30 +41,6 @@
         let key = event.target.innerText
         this.$emit('tecla', key)
       }
-    },
-    mounted () {
-      if (screen.height <= 600) {
-        this.tamanhobtn = '2.95'
-      }
-      else if ((screen.height > 600) && (screen.height <= 640)) {
-        this.tamanhobtn = '3.7'
-      }
-      else if ((screen.height > 640) && (screen.height <= 670)) {
-        this.tamanhobtn = '4'
-      }
-      else if ((screen.height > 670) && (screen.height <= 740)) {
-        this.tamanhobtn = '4.75'
-      }
-      else if (screen.height === 732) {
-        this.tamanhobtn = '3.8'
-      }
-      else if ((screen.height > 740) && (screen.height <= 960)) {
-        this.tamanhobtn = '7.15'
-      }
-      else if (screen.height > 960) {
-        this.tamanhobtn = '10'
-      }
-      console.log(screen.height)
     }
   }
 </script>
