@@ -306,8 +306,11 @@ export default {
   }
 
   .selecionado{
-    border-left: 9px solid #FFF;
+    border-left: 9px solid #FFFF00;
   }
 
+  .q-input-target{
+    font-size: 1.45rem;
+  }
 
 </style>
