@@ -4,24 +4,26 @@
 
 > Aluno Matheus Ricelly
 
+## Estado do projeto
+
+Este projeto utiliza stack legada (Vue 2 + Quasar 0.14 + Webpack 3), mas ainda compila no ambiente atual.
+
+Para uma análise de reativação e plano de modernização, consulte:
+
+- [`docs/avaliacao-reativacao-2026.md`](docs/avaliacao-reativacao-2026.md)
+
 ## Build Setup
 
-``` bash
-# instalar o VueJs
-$ npm install -g vue-cli
+```bash
+# instalar dependências
+npm install
 
-# instalar o Quasar 
-# npm install -g quasar
+# ambiente de desenvolvimento
+npm run dev
 
-# instalar dependencia
-$ npm install
+# build de produção
+npm run build
 
-# carregar o app atraves de localhost:8080
-$ quasar dev
-
-# build for production with minification
-$ quasar build
-
-# lint code
-$ quasar lint
+# lint
+npm run lint
 ```
